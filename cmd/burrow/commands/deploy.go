@@ -75,7 +75,6 @@ func Deploy(output Output) func(cmd *cli.Cmd) {
 		playbooksArg := cmd.StringsArg("FILE", []string{},
 			"path to playbook file which deploy should run. if also using the --dir flag, give the relative path to playbooks file, which should be in the same directory")
 
-
 		cmd.Spec = "[--chain=<host:port>] [--keys=<host:port>] [--mempool-signing] [--dir=<root directory>] " +
 			"[--output=<output file>] [--wasm] [--set=<KEY=VALUE>]... [--bin-path=<path>] [--gas=<gas>] " +
 			"[--jobs=<concurrent playbooks>] [--address=<address>] [--fee=<fee>] [--amount=<amount>] [--local-abi] " +
