@@ -241,7 +241,7 @@ func IdentifyJob(tx *payload.IdentifyTx, client *def.Client, logger *logging.Log
 		return "", fmt.Errorf("error in IdentifyJob with payload %v: %w", tx, err)
 	}
 
-	LogTxExecution(txe,logger)
+	LogTxExecution(txe, logger)
 	if err != nil {
 		return "", err
 	}
@@ -284,4 +284,3 @@ func LogTxExecution(txe *exec.TxExecution, logger *logging.Logger) {
 		}
 	}
 }
-

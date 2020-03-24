@@ -5,6 +5,7 @@ import "fmt"
 // If we ever want to ship some specific debug we could make this a string var and set it through -ldflags "-X ..."
 
 const debug = true
+
 //const debug = false
 
 // Using this in place of Printf statements makes it easier to find any errant debug statements and the switch means
