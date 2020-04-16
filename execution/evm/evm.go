@@ -74,21 +74,30 @@ func Default() *EVM {
 // an quantity metering the number of computational steps available to the execution according to the gas schedule.
 func (vm *EVM) Execute(st acmstate.ReaderWriter, blockchain engine.Blockchain, eventSink exec.EventSink,
 	params engine.CallParams, code []byte) ([]byte, error) {
+	
+	fmt.Printf("Error params: %s\n", params)
 
 	// Make it appear as if natives are stored in state
 	st = native.NewState(vm.options.Natives, st)
+	
+	fmt.Printf("Error st: %s\n", st)
 
 	state := engine.State{
 		CallFrame:  engine.NewCallFrame(st).WithMaxCallStackDepth(vm.options.CallStackMaxDepth),
 		Blockchain: blockchain,
 		EventSink:  eventSink,
 	}
+	
+	fmt.Printf("Error state: %s\n", state)
 
 	output, err := vm.Contract(code).Call(state, params)
 	if err == nil {
 		// Only sync back when there was no exception
 		err = state.CallFrame.Sync()
 	}
+	
+	fmt.Printf("Error err: %s\n", err)
+	
 	// Always return output - we may have a reverted exception for which the return is meaningful
 	return output, err
 }
